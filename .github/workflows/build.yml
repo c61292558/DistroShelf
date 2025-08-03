@@ -46,7 +46,14 @@ jobs:
 
     - name: List files
       run: ls -la
-          
+
+    - name: Lower glib requirement to 2.80
+      run: |
+        # 就地 patch 2.82 → 2.80
+        sed -i 's/"2.82"/"2.80"/g' \
+            build/cargo-home/registry/src/*/glib-sys-*/Cargo.toml \
+            build/cargo-home/registry/src/*/gobject-sys-*/Cargo.toml
+            
     - name: Install dependencies
       run: |
         sudo apt update -y && \
