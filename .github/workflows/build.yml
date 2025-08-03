@@ -82,7 +82,7 @@ jobs:
           libxrender-dev \
           libxkbcommon-dev \
           libwayland-dev \
-          && apt clean"
+          && apt clean
 
 
     - name: Compile project
