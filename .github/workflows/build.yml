@@ -57,7 +57,9 @@ jobs:
             libpcre2-dev zlib1g-dev meson ninja-build build-essential rustc cargo \
           && sudo apt clean
 
-
+    - name: Fix lockfile
+      run: rm -f Cargo.lock
+      
     - name: Compile project
       run: |
         mkdir -p ~/Desktop/q
