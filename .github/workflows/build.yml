@@ -51,6 +51,8 @@ jobs:
       run: |
         sudo   apt update -y && \
         apt install -y \
+          libgtk-4-dev \
+          libadwaita-1-dev \
           pkg-config \
           libffi-dev \
           libmount-dev \
