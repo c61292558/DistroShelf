@@ -61,7 +61,7 @@ jobs:
     - name: Compile project
       run: |
         mkdir -p ~/Desktop/q
-        sudo meson setup build --prefix=~/Desktop/q  
+        meson setup build --prefix=~/Desktop/q  
         ninja -C build
         ninja -C build install
               
