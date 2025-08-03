@@ -46,26 +46,7 @@ jobs:
 
     - name: List files
       run: ls -la
-      
-    - name: Setup Docker
-      run: |
-        sudo systemctl start docker
-        sudo docker info
-
-    - name: Build Docker container
-      run: |
-        sudo docker run -dit \
-          --name qtbuilder \
-          -v ${{ github.workspace }}:/workspace \
-          linuxdeepin/deepin:23
-
           
-    
-
-    - name: Check CMakeLists.txt in container
-      run: 
-        sudo docker exec qtbuilder ls -la /workspace/CMakeLists.txt
-    
     - name: Install dependencies
       run: |
         sudo docker exec qtbuilder bash -c "
