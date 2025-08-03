@@ -49,9 +49,14 @@ jobs:
           
     - name: Install dependencies
       run: |
-        sudo docker exec qtbuilder bash -c "
-        apt update -y && \
+        sudo   apt update -y && \
         apt install -y \
+          pkg-config \
+          libffi-dev \
+          libmount-dev \
+          libpcre2-dev \
+          zlib1g-dev \
+          meson \
           rustc \
           cargo \
           xz-utils \
@@ -63,7 +68,6 @@ jobs:
           wget \
           flex \
           bison \
-          zlib1g-dev \
           libgmp-dev \
           libmpfr-dev \
           libmpc-dev \
@@ -77,22 +81,15 @@ jobs:
           libxkbcommon-dev \
           libwayland-dev \
           && apt clean"
-        
-  
+
 
     - name: Compile project
       run: |
-        sudo docker exec qtbuilder bash -c "cd /workspace && \
-        mkdir -p build && \
-        cd build && \
-        cmake   .. && \   
-        make "# 编译
-        # 生成 Makefile  del -DCMAKE_CXX_STANDARD=20  cmake --debug-output  , make  VERBOSE=1
-
-   
-      
-
-    
+        mkdir -p ~/Desktop/q
+        sudo meson setup build --prefix=~/Desktop/q  
+        ninja -C build
+        ninja -C build install
+              
     - name: Debug Git Info # 在 Get version info 步骤之前添加
       run: |
         echo "--- Git Status ---"
