@@ -51,6 +51,7 @@ jobs:
       run: |
         sudo apt update -y && \
         sudo apt install -y \
+          desktop-file-utils \
           gettext \
            libgtk-4-dev libadwaita-1-dev pkg-config libffi-dev libmount-dev \
             libpcre2-dev zlib1g-dev meson ninja-build build-essential rustc cargo \
